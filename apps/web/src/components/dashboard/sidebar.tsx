@@ -24,7 +24,7 @@ export function Sidebar() {
       <div className="flex items-center gap-2 px-5 py-5">
         <div className="grid h-8 w-8 place-items-center rounded-lg bg-brand-600 text-sm font-bold text-white">D</div>
         <div className="min-w-0">
-          <p className="text-base font-semibold leading-tight tracking-tight">Dalmg</p>
+          <p className="text-base font-semibold leading-tight tracking-tight">Yazi</p>
           <p className="truncate text-[11px] text-slate-500 dark:text-slate-400">{tenant?.name ?? 'Рабочее пространство'}</p>
         </div>
       </div>

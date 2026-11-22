@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import type { PageDetail, ProjectSummary } from '@dalmg/contracts';
+import type { PageDetail, ProjectSummary } from '@yazi/contracts';
 import { Alert, Button, Spinner } from '@/components/ui';
 import { useApi, useAuth } from '@/lib/auth';
 import { useAsync } from '@/lib/hooks';

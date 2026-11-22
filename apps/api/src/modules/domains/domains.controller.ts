@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
-import { addDomainSchema } from '@dalmg/contracts';
+import { addDomainSchema } from '@yazi/contracts';
 import { AuthGuard, MinRole, TenantGuard, TenantId, ZodValidationPipe } from '../../common/guards';
 import { DomainsService } from './domains.service';
 

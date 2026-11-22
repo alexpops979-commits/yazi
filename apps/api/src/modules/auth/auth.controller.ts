@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Patch, Post, Req, Res, UseGuards } from '@nestjs/common';
 import type { Request, Response } from 'express';
-import { changePasswordSchema, loginSchema, registerSchema, updateProfileSchema } from '@dalmg/contracts';
+import { changePasswordSchema, loginSchema, registerSchema, updateProfileSchema } from '@yazi/contracts';
 import { AuthService } from './auth.service';
 import { GuestService } from './guest.service';
 import { AuthGuard, Public, CurrentUser, ZodValidationPipe } from '../../common/guards';

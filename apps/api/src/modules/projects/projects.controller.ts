@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
-import { createProjectSchema, updateProjectSchema } from '@dalmg/contracts';
+import { createProjectSchema, updateProjectSchema } from '@yazi/contracts';
 import {
   AuthGuard,
   CurrentUser,

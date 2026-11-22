@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Ban, CheckCircle2, Search, Shield, Trash2 } from 'lucide-react';
-import type { AdminStats, AdminUserRow, TemplateSummary } from '@dalmg/contracts';
+import type { AdminStats, AdminUserRow, TemplateSummary } from '@yazi/contracts';
 import { Alert, Badge, Button, Card, Input, Spinner, Tabs, cn } from '@/components/ui';
 import { useApi, useAuth } from '@/lib/auth';
 import { errorMessage, timeAgo, useAsync } from '@/lib/hooks';

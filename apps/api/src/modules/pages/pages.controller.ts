@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
-import { createPageSchema, saveDraftSchema, updatePageSchema } from '@dalmg/contracts';
+import { createPageSchema, saveDraftSchema, updatePageSchema } from '@yazi/contracts';
 import type { z } from 'zod';
 import {
   AuthGuard,

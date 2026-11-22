@@ -1,6 +1,6 @@
 import { cache } from 'react';
-import type { PublicSitePayload, PageDetail } from '@dalmg/contracts';
-import type { PageDocument } from '@dalmg/page-schema';
+import type { PublicSitePayload, PageDetail } from '@yazi/contracts';
+import type { PageDocument } from '@yazi/page-schema';
 
 export function apiBase(): string {
   return process.env.API_INTERNAL_URL ?? process.env.API_PUBLIC_URL ?? 'http://127.0.0.1:3001';

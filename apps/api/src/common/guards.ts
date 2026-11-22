@@ -13,7 +13,7 @@ import { Reflector } from '@nestjs/core';
 import type { Request } from 'express';
 import type { ZodType } from 'zod';
 import { ZodError } from 'zod';
-import type { MembershipRole } from '@dalmg/contracts';
+import type { MembershipRole } from '@yazi/contracts';
 import { PrismaService } from './prisma.service';
 import { RedisService } from './redis.service';
 import { parseCookies, verifyAccessToken } from './crypto';
@@ -69,7 +69,7 @@ export class AuthGuard implements CanActivate {
     if (env.singleWorkspace) {
       const workspace = getDefaultWorkspace();
       if (!workspace) throw new UnauthorizedException('Workspace is not ready');
-      request.user = { id: workspace.userId, email: 'system@dalmg.local', role: 'SUPER_ADMIN' };
+      request.user = { id: workspace.userId, email: 'system@yazi.local', role: 'SUPER_ADMIN' };
       return true;
     }
 
@@ -118,7 +118,7 @@ export class TenantGuard implements CanActivate {
       const workspace = getDefaultWorkspace();
       if (!workspace) throw new ForbiddenException('Workspace is not ready');
       const singleRequest = context.switchToHttp().getRequest<Request>();
-      singleRequest.user ??= { id: workspace.userId, email: 'system@dalmg.local', role: 'SUPER_ADMIN' };
+      singleRequest.user ??= { id: workspace.userId, email: 'system@yazi.local', role: 'SUPER_ADMIN' };
       singleRequest.tenantId = workspace.tenantId;
       singleRequest.tenantRole = 'OWNER';
       return true;

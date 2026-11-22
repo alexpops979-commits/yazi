@@ -17,15 +17,15 @@ export class WorkspaceService {
     let tenant = await this.prisma.raw.tenant.findUnique({ where: { slug: 'demo-studio' } });
     if (!tenant) tenant = await this.prisma.raw.tenant.findFirst({ orderBy: { createdAt: 'asc' } });
     if (!tenant) {
-      tenant = await this.prisma.raw.tenant.create({ data: { name: 'Dalmg', slug: 'main', planCode: 'business' } });
+      tenant = await this.prisma.raw.tenant.create({ data: { name: 'Yazi', slug: 'main', planCode: 'business' } });
     }
 
-    let user = await this.prisma.raw.user.findUnique({ where: { email: 'system@dalmg.local' } });
+    let user = await this.prisma.raw.user.findUnique({ where: { email: 'system@yazi.local' } });
     if (!user) {
       user = await this.prisma.raw.user.create({
         data: {
-          email: 'system@dalmg.local',
-          name: 'Dalmg',
+          email: 'system@yazi.local',
+          name: 'Yazi',
           passwordHash: 'disabled',
           role: 'SUPER_ADMIN',
           emailVerifiedAt: new Date(),

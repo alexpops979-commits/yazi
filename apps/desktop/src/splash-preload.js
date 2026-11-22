@@ -2,7 +2,7 @@
 
 const { contextBridge, ipcRenderer } = require('electron');
 
-contextBridge.exposeInMainWorld('dalmg', {
+contextBridge.exposeInMainWorld('yazi', {
   openSetup: () => ipcRenderer.invoke('splash:openSetup'),
   onStatus: (handler) => {
     const listener = (_event, status) => handler(status);

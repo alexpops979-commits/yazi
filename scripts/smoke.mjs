@@ -117,7 +117,7 @@ async function main() {
 
   /* ── Admin ───────────────────────────────────────────── */
   const admin = new Client();
-  await admin.expect('/auth/login', { method: 'POST', body: { email: 'admin@dalmg.dev', password: 'admin12345' } }, 201, 'admin login');
+  await admin.expect('/auth/login', { method: 'POST', body: { email: 'admin@yazi.dev', password: 'admin12345' } }, 201, 'admin login');
   const stats = await admin.expect('/admin/stats', {}, 200, 'admin stats');
   console.log(`✓ admin stats: users=${stats.users} projects=${stats.projects} publishedPages=${stats.publishedPages}`);
   if (!singleWorkspace) {

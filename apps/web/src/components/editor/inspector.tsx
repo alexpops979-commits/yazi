@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { Copy, ImagePlus, Trash2 } from 'lucide-react';
-import type { PageNode, StyleProps } from '@dalmg/page-schema';
-import { findNode } from '@dalmg/page-schema';
+import type { PageNode, StyleProps } from '@yazi/page-schema';
+import { findNode } from '@yazi/page-schema';
 import { getBlockDefinition } from '@/blocks/registry';
 import type { Control } from '@/blocks/types';
 import { collectionToText } from '@/blocks/types';

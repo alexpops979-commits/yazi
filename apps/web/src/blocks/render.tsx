@@ -1,5 +1,5 @@
 import { Fragment, type ReactNode } from 'react';
-import type { PageDocument, PageNode } from '@dalmg/page-schema';
+import type { PageDocument, PageNode } from '@yazi/page-schema';
 import { getBlockDefinition } from './registry';
 import type { RenderContext } from './types';
 

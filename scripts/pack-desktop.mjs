@@ -5,8 +5,8 @@
  *   node scripts/pack-desktop.mjs
  *
  * Output:
- *   apps/desktop/release/Dalmg-win-x64/Dalmg.exe
- *   apps/desktop/release/Dalmg-portable-<version>.zip
+ *   apps/desktop/release/Yazi-win-x64/Yazi.exe
+ *   apps/desktop/release/Yazi-portable-<version>.zip
  */
 
 import { cpSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync, copyFileSync, statSync } from 'node:fs';
@@ -17,7 +17,7 @@ const root = process.cwd();
 const appDir = path.join(root, 'apps', 'desktop');
 const electronDist = path.join(appDir, '.electron-dist');
 const pkg = JSON.parse(readFileSync(path.join(appDir, 'package.json'), 'utf8'));
-const outDir = path.join(appDir, 'release', 'Dalmg-win-x64');
+const outDir = path.join(appDir, 'release', 'Yazi-win-x64');
 
 if (!existsSync(path.join(electronDist, 'electron.exe'))) {
   console.error('Electron runtime not found. Expected apps/desktop/.electron-dist/electron.exe');
@@ -31,7 +31,7 @@ mkdirSync(outDir, { recursive: true });
 console.log('• copying Electron runtime');
 cpSync(electronDist, outDir, { recursive: true });
 
-const exePath = path.join(outDir, 'Dalmg.exe');
+const exePath = path.join(outDir, 'Yazi.exe');
 renameSync(path.join(outDir, 'electron.exe'), exePath);
 
 const resourcesApp = path.join(outDir, 'resources', 'app');
@@ -43,8 +43,8 @@ cpSync(path.join(appDir, 'src'), path.join(resourcesApp, 'src'), { recursive: tr
 cpSync(path.join(appDir, 'build'), path.join(resourcesApp, 'build'), { recursive: true });
 
 const appPkg = {
-  name: 'dalmg',
-  productName: 'Dalmg',
+  name: 'yazi',
+  productName: 'Yazi',
   version: pkg.version,
   description: pkg.description,
   author: pkg.author,
@@ -55,7 +55,7 @@ writeFileSync(path.join(resourcesApp, 'package.json'), JSON.stringify(appPkg, nu
 /* Windows shortcuts with the branded icon (the exe keeps Electron's embedded icon,
    the shortcut/taskbar/window icon comes from build/icon.ico). */
 const ico = path.join(outDir, 'resources', 'app', 'build', 'icon.ico');
-const shortcut = path.join(outDir, 'Dalmg.lnk');
+const shortcut = path.join(outDir, 'Yazi.lnk');
 try {
   const ps = [
     '$ws = New-Object -ComObject WScript.Shell;',
@@ -63,7 +63,7 @@ try {
     `$s.TargetPath = '${exePath.replace(/'/g, "''")}';`,
     `$s.WorkingDirectory = '${outDir.replace(/'/g, "''")}';`,
     `$s.IconLocation = '${ico.replace(/'/g, "''")}';`,
-    '$s.Description = "Dalmg — конструктор сайтов";',
+    '$s.Description = "Yazi — конструктор сайтов";',
     '$s.Save();',
   ].join(' ');
   execFileSync('powershell', ['-NoProfile', '-Command', ps], { windowsHide: true });
@@ -72,7 +72,7 @@ try {
   console.warn('! shortcut creation skipped:', error instanceof Error ? error.message : error);
 }
 
-/* Optional: replace the icon embedded in Dalmg.exe (requires rcedit). */
+/* Optional: replace the icon embedded in Yazi.exe (requires rcedit). */
 const rceditCandidates = [
   path.join(root, 'node_modules', 'rcedit', 'bin', 'rcedit-x64.exe'),
   path.join(root, 'node_modules', 'rcedit', 'bin', 'rcedit.exe'),
@@ -92,16 +92,16 @@ if (existsSync(rcedit)) {
         pkg.version,
         '--set-version-string',
         'ProductName',
-        'Dalmg',
+        'Yazi',
         '--set-version-string',
         'FileDescription',
-        'Dalmg — конструктор сайтов',
+        'Yazi — конструктор сайтов',
         '--set-version-string',
         'CompanyName',
-        'Dalmg',
+        'Yazi',
         '--set-version-string',
         'LegalCopyright',
-        '© 2026 Dalmg',
+        '© 2026 Yazi',
       ],
       { windowsHide: true, stdio: 'ignore' },
     );
@@ -113,7 +113,7 @@ if (existsSync(rcedit)) {
   console.log('• rcedit not installed — exe icon stays default (shortcut icon is branded)');
 }
 
-const zipPath = path.join(appDir, 'release', `Dalmg-portable-${pkg.version}.zip`);
+const zipPath = path.join(appDir, 'release', `Yazi-portable-${pkg.version}.zip`);
 rmSync(zipPath, { force: true });
 console.log('• packing zip');
 execFileSync(

@@ -36,7 +36,7 @@ export const env = {
   },
 } as const;
 
-export const SESSION_COOKIE = 'dalmg_session';
+export const SESSION_COOKIE = 'yazi_session';
 export const ACCESS_TTL_SECONDS = 15 * 60;
 export const REFRESH_TTL_SECONDS = 30 * 24 * 60 * 60;
 export const TRIAL_DAYS = 14;

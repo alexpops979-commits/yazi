@@ -1,5 +1,5 @@
 {
-  "name": "@dalmg/contracts",
+  "name": "@yazi/contracts",
   "version": "0.1.0",
   "private": true,
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@dalmg/page-schema": "*",
+    "@yazi/page-schema": "*",
     "zod": "^3.24.1"
   },
   "devDependencies": {

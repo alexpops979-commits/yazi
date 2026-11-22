@@ -2,7 +2,7 @@
 
 **Оценка: PARTIAL.** Изоляция данных на уровне API работает (проверено HTTP: чужой project/page → 404, поддельный `X-Tenant-Id` → 403, без заголовка → 400, без сессии → 401), но найдена реальная эскалация прав через приглашения, «мягкие» сессии (logout/смена пароля не отзывают токены) и полное отсутствие анти-абьюза на публичных auth-маршрутах.
 
-**Стенд:** API `127.0.0.1:3001`, demo@dalmg.dev (Demo Studio, OWNER), Prisma 6.2.1, Redis доступен. Тестовые user/workspace/project создавались через API и остались в БД как артефакты аудита.
+**Стенд:** API `127.0.0.1:3001`, demo@yazi.dev (Demo Studio, OWNER), Prisma 6.2.1, Redis доступен. Тестовые user/workspace/project создавались через API и остались в БД как артефакты аудита.
 
 ## Таблица проверок
 
@@ -15,7 +15,7 @@
 | 5 | Списки без 404 | **PARTIAL** | `GET /projects/{чужой}/pages` → **200 `[]`**, `GET /projects/nope/pages` → **200 `[]`** (`pages.controller.ts:24-27`, `pages.service.ts:30-37`): утечки нет, но контракт 404 нарушен |
 | 6 | Регистрация/workspace/роли | **PASS** | `POST /auth/register` → **201**, создан workspace + `OWNER` + `free/TRIALING` на 14 дней (`auth.service.ts:35-45`), повторный email → **409**, короткий пароль/битый email → **400**; uppercase email нормализуется (`contracts/src/index.ts:80-88`) |
 | 7 | Гостевой вход | **FAIL** | `POST /auth/guest` → **201**, изоляция соблюдена (guest project чужому → **404**, чужой tenant → **403**), но гость сразу получает `planCode=business` + `ACTIVE` на 365 дней (`guest.service.ts:36-54`) — платный тариф бесплатно и в обход entitlements; rate limit отсутствует (в `apps/**` нет ни `Throttler`, ни лимитера) |
-| 8 | Cookie + JWT + `/auth/me` | **PASS** | Одна cookie `dalmg_session` = `access\|refresh` (`http.ts:16-18`, в браузере `%7C`), `HttpOnly`, `SameSite=Lax`, `Secure` в prod (`http.ts:4-9`); TTL 15 мин / 30 дней (`crypto.ts:57-65`); `/auth/me` с cookie → **200**, без → **401**, Bearer → **200** |
+| 8 | Cookie + JWT + `/auth/me` | **PASS** | Одна cookie `yazi_session` = `access\|refresh` (`http.ts:16-18`, в браузере `%7C`), `HttpOnly`, `SameSite=Lax`, `Secure` в prod (`http.ts:4-9`); TTL 15 мин / 30 дней (`crypto.ts:57-65`); `/auth/me` с cookie → **200**, без → **401**, Bearer → **200** |
 | 9 | Refresh rotation | **PASS(−)** | refresh полной cookie → **201**, новый refresh; повтор старой пары → **401**; cookie только с refresh → **401** (`splitSession` требует разделитель `\|`, `http.ts:24-29`). Минусы: `del()`→`issue()` не атомарно, нет reuse-detection с отзывом семейства; access-токен при ротации не меняется (детерминированный payload) |
 | 10 | Logout / смена пароля | **FAIL** | logout → **201**, но старый access-токен ещё работает: `GET /projects` → **200**. После смены пароля вторая сессия жива: refresh → **201**, access → **200**. Причина: `auth.service.ts:151-153` делает `redis.del('rt:*')` — буквальный ключ, а не паттерн; refresh хранятся по `rt:<jti>` (`94`) |
 | 11 | Приглашения | **FAIL** | B приглашает `stranger@…` как ADMIN (токен возвращается в JSON, `tenants.service.ts:97`) → **demo** (посторонний) принимает токен → **201**, `GET /workspace/members` → **200**, `PATCH /workspace` → **200**. В `tenants.service.ts:118-131` нет сверки `invitation.email` с email пользователя |

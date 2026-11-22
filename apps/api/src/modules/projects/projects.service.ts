@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { blankDocument, migrateDocument, type PageDocument } from '@dalmg/page-schema';
-import { RESERVED_SUBDOMAINS, type CreateProjectInput, type ProjectSummary, type Seo, type UpdateProjectInput } from '@dalmg/contracts';
+import { blankDocument, migrateDocument, type PageDocument } from '@yazi/page-schema';
+import { RESERVED_SUBDOMAINS, type CreateProjectInput, type ProjectSummary, type Seo, type UpdateProjectInput } from '@yazi/contracts';
 import { PrismaService } from '../../common/prisma.service';
 import { EntitlementsService } from '../../common/entitlements.service';
 import { TemplatesService } from '../templates/templates.service';

@@ -17,7 +17,7 @@ import {
   Settings,
   Trash2,
 } from 'lucide-react';
-import type { PageSummary, ProjectSummary, TemplateSummary } from '@dalmg/contracts';
+import type { PageSummary, ProjectSummary, TemplateSummary } from '@yazi/contracts';
 import { Alert, Badge, Button, Card, Field, Input, Modal, Select, Spinner } from '@/components/ui';
 import { useApi } from '@/lib/auth';
 import { errorMessage, timeAgo, useAsync } from '@/lib/hooks';

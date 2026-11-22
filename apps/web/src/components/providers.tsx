@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { AuthProvider } from '@/lib/auth';
 
-const THEME_KEY = 'dalmg:theme';
+const THEME_KEY = 'yazi:theme';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   useEffect(() => {

@@ -1,8 +1,8 @@
 import path from 'node:path';
 import { config as loadEnv } from 'dotenv';
-import { DEFAULT_LIMITS, type PlanCode } from '@dalmg/contracts';
-import { migrateDocument } from '@dalmg/page-schema';
-import { systemTemplates } from '@dalmg/templates';
+import { DEFAULT_LIMITS, type PlanCode } from '@yazi/contracts';
+import { migrateDocument } from '@yazi/page-schema';
+import { systemTemplates } from '@yazi/templates';
 import { hashPassword, prismaRaw as prisma } from '../src';
 
 loadEnv({ path: path.resolve(process.cwd(), '../../.env') });
@@ -234,17 +234,17 @@ async function main() {
   await seedTemplates();
 
   const admin = await ensureWorkspace({
-    email: process.env.ADMIN_EMAIL ?? 'admin@dalmg.dev',
+    email: process.env.ADMIN_EMAIL ?? 'admin@yazi.dev',
     password: process.env.ADMIN_PASSWORD ?? 'admin12345',
     name: 'Platform Admin',
-    workspaceName: 'Dalmg HQ',
-    workspaceSlug: 'dalmg-hq',
+    workspaceName: 'Yazi HQ',
+    workspaceSlug: 'yazi-hq',
     role: 'SUPER_ADMIN',
     planCode: 'business',
   });
 
   const demo = await ensureWorkspace({
-    email: process.env.DEMO_EMAIL ?? 'demo@dalmg.dev',
+    email: process.env.DEMO_EMAIL ?? 'demo@yazi.dev',
     password: process.env.DEMO_PASSWORD ?? 'demo12345',
     name: 'Demo Designer',
     workspaceName: 'Demo Studio',
@@ -256,8 +256,8 @@ async function main() {
   await seedDemoSite(demo.tenant.id, demo.user.id);
 
   console.log('\nSeed complete:');
-  console.log(`  admin: ${process.env.ADMIN_EMAIL ?? 'admin@dalmg.dev'} / ${process.env.ADMIN_PASSWORD ?? 'admin12345'}`);
-  console.log(`  demo:  ${process.env.DEMO_EMAIL ?? 'demo@dalmg.dev'} / ${process.env.DEMO_PASSWORD ?? 'demo12345'}`);
+  console.log(`  admin: ${process.env.ADMIN_EMAIL ?? 'admin@yazi.dev'} / ${process.env.ADMIN_PASSWORD ?? 'admin12345'}`);
+  console.log(`  demo:  ${process.env.DEMO_EMAIL ?? 'demo@yazi.dev'} / ${process.env.DEMO_PASSWORD ?? 'demo12345'}`);
   console.log(`  admin workspace: ${admin.tenant.slug}`);
 }
 

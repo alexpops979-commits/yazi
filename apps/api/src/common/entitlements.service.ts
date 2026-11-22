@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from './prisma.service';
 import { PaymentRequiredException } from './errors';
-import type { EntitlementKey, PlanCode, PlanLimits } from '@dalmg/contracts';
-import { DEFAULT_LIMITS, UNLIMITED_LIMITS } from '@dalmg/contracts';
+import type { EntitlementKey, PlanCode, PlanLimits } from '@yazi/contracts';
+import { DEFAULT_LIMITS, UNLIMITED_LIMITS } from '@yazi/contracts';
 import { env } from '../env';
 
 export type ResolvedEntitlements = {

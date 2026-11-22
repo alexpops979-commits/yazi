@@ -12,7 +12,7 @@ import { execFileSync } from 'node:child_process';
 const root = process.cwd();
 const makensis = path.join(root, 'apps', 'desktop', '.nsis', 'makensis.exe');
 const buildDir = path.join(root, 'apps', 'desktop', 'build');
-const portableExe = path.join(root, 'apps', 'desktop', 'release', 'Dalmg-win-x64', 'Dalmg.exe');
+const portableExe = path.join(root, 'apps', 'desktop', 'release', 'Yazi-win-x64', 'Yazi.exe');
 
 if (!existsSync(portableExe)) {
   console.error('Portable build missing. Run: npm run desktop:pack');
@@ -30,5 +30,5 @@ if (!existsSync(makensis)) {
 console.log('• compiling installer (NSIS)');
 execFileSync(makensis, ['/V2', 'installer.nsi'], { cwd: buildDir, stdio: 'inherit' });
 
-const out = path.join(root, 'apps', 'desktop', 'release', 'Dalmg-Setup-1.0.0.exe');
+const out = path.join(root, 'apps', 'desktop', 'release', 'Yazi-Setup-1.0.0.exe');
 console.log(existsSync(out) ? `\n✓ Installer ready: ${out}` : '\n! Installer was not produced');

@@ -5,7 +5,7 @@
 #   powershell -ExecutionPolicy Bypass -File scripts/dev-db.ps1 -Stop
 #
 # Then set in .env:
-#   DATABASE_URL="postgresql://postgres:postgres@127.0.0.1:5433/dalmg?schema=public"
+#   DATABASE_URL="postgresql://postgres:postgres@127.0.0.1:5433/yazi?schema=public"
 
 param(
   [int]$Port = 5433,
@@ -19,7 +19,7 @@ if (-not $bin) {
   exit 1
 }
 $binDir = Split-Path $bin.FullName
-$data = Join-Path $env:TEMP 'dalmg-pg'
+$data = Join-Path $env:TEMP 'yazi-pg'
 
 if ($Stop) {
   & (Join-Path $binDir 'pg_ctl.exe') -D $data stop
@@ -34,12 +34,12 @@ if (-not (Test-Path (Join-Path $data 'PG_VERSION'))) {
 & (Join-Path $binDir 'pg_ctl.exe') -D $data -o "-p $Port" -l (Join-Path $data 'server.log') start
 Start-Sleep -Seconds 2
 
-$exists = & (Join-Path $binDir 'psql.exe') -h 127.0.0.1 -p $Port -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname='dalmg'"
+$exists = & (Join-Path $binDir 'psql.exe') -h 127.0.0.1 -p $Port -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname='yazi'"
 if ($exists -ne '1') {
-  & (Join-Path $binDir 'createdb.exe') -h 127.0.0.1 -p $Port -U postgres dalmg
+  & (Join-Path $binDir 'createdb.exe') -h 127.0.0.1 -p $Port -U postgres yazi
 }
 
 Write-Host ""
-Write-Host "PostgreSQL is running on 127.0.0.1:$Port (db=dalmg, user=postgres, no password)" -ForegroundColor Green
-Write-Host "DATABASE_URL=`"postgresql://postgres:postgres@127.0.0.1:$Port/dalmg?schema=public`""
+Write-Host "PostgreSQL is running on 127.0.0.1:$Port (db=yazi, user=postgres, no password)" -ForegroundColor Green
+Write-Host "DATABASE_URL=`"postgresql://postgres:postgres@127.0.0.1:$Port/yazi?schema=public`""
 Write-Host "Stop with: powershell -File scripts/dev-db.ps1 -Stop"

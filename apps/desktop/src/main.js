@@ -6,7 +6,7 @@ const os = require('node:os');
 const path = require('node:path');
 const { spawn } = require('node:child_process');
 
-const APP_NAME = 'Dalmg';
+const APP_NAME = 'Yazi';
 const ICON_ICO = path.join(__dirname, '..', 'build', 'icon.ico');
 const ICON_PNG = path.join(__dirname, '..', 'build', 'icon.png');
 // Stable location regardless of Electron's default "<vendor>/<package name>" folder.
@@ -21,7 +21,7 @@ let setupWindow = null;
 let splashWindow = null;
 let serverProcess = null;
 
-app.setAppUserModelId('dev.dalmg.builder');
+app.setAppUserModelId('dev.yazi.builder');
 app.setName(APP_NAME);
 
 /* ── config ─────────────────────────────────────────────── */
@@ -44,17 +44,17 @@ function saveConfig(next) {
 
 function detectDefaultProjectDir() {
   const candidates = [
-    process.env.DALMG_PROJECT_DIR,
-    path.join(os.homedir(), 'dalmg'),
-    path.join(os.homedir(), 'Documents', 'dalmg'),
+    process.env.YAZI_PROJECT_DIR,
+    path.join(os.homedir(), 'yazi'),
+    path.join(os.homedir(), 'Documents', 'yazi'),
   ].filter(Boolean);
 
   for (const dir of candidates) {
     try {
       const pkg = JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8'));
-      if (pkg.name === 'dalmg') return dir;
+      if (pkg.name === 'yazi') return dir;
     } catch {
-      /* not a dalmg checkout */
+      /* not a yazi checkout */
     }
   }
   return '';
@@ -359,7 +359,7 @@ ipcMain.handle('setup:test', async (_event, url) => {
 });
 
 ipcMain.handle('setup:pickDir', async () => {
-  const result = await dialog.showOpenDialog({ properties: ['openDirectory', 'createDirectory'], title: 'Папка проекта Dalmg' });
+  const result = await dialog.showOpenDialog({ properties: ['openDirectory', 'createDirectory'], title: 'Папка проекта Yazi' });
   return result.canceled ? null : result.filePaths[0] ?? null;
 });
 

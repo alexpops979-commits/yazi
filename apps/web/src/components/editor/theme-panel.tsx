@@ -1,6 +1,6 @@
 'use client';
 
-import { FONT_OPTIONS } from '@dalmg/page-schema';
+import { FONT_OPTIONS } from '@yazi/page-schema';
 import { Field, Input, Select } from '@/components/ui';
 import { useEditorStore } from './store';
 

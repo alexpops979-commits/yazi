@@ -57,7 +57,7 @@ export async function api<T>(path: string, options: ApiOptions = {}): Promise<T>
   if (response.status === 401 && options.retryAuth !== false && !IS_SERVER) {
     const refreshed = await tryRefresh();
     if (refreshed) return api<T>(path, { ...options, retryAuth: false });
-    window.dispatchEvent(new Event('dalmg:unauthorized'));
+    window.dispatchEvent(new Event('yazi:unauthorized'));
   }
 
   const contentType = response.headers.get('content-type') ?? '';

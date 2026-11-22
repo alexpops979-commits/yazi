@@ -56,8 +56,8 @@ export default async function PublishedSitePage({ params }: Props) {
       <style dangerouslySetInnerHTML={{ __html: `html,body{margin:0;padding:0;background:${background}}${css}` }} />
       <PageRenderer document={document} ctx={{ mode: 'published', device: 'desktop', theme: document.theme }} />
       {payload.project.branding && (
-        <a className="pb-brand-badge" href="https://dalmg.dev" target="_blank" rel="noopener">
-          ⚡ Сделано в Dalmg
+        <a className="pb-brand-badge" href="https://yazi.dev" target="_blank" rel="noopener">
+          ⚡ Сделано в Yazi
         </a>
       )}
       {payload.project.customCode ? <div dangerouslySetInnerHTML={{ __html: payload.project.customCode }} /> : null}

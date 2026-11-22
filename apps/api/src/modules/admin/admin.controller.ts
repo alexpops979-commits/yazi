@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
-import { planLimitsSchema, upsertTemplateSchema } from '@dalmg/contracts';
+import { planLimitsSchema, upsertTemplateSchema } from '@yazi/contracts';
 import { z } from 'zod';
 import { AuthGuard, CurrentUser, SuperAdminGuard, ZodValidationPipe, type AuthUserContext } from '../../common/guards';
 import { AdminService } from './admin.service';

@@ -1,5 +1,5 @@
 {
-  "name": "@dalmg/page-schema",
+  "name": "@yazi/page-schema",
   "version": "0.1.0",
   "private": true,
   "main": "dist/index.js",

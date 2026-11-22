@@ -14,7 +14,7 @@
 
 | # | Проверка | Итог | Доказательства |
 |---|---|---|---|
-| 1 | Тумблер в сайдбаре | **PASS** | клик: `html.className "" → "dark"`, `localStorage['dalmg:theme'] null → "dark"`, `body` bg `rgb(245,246,250) → rgb(11,16,32)`; повторный клик возвращает `""`/`light` |
+| 1 | Тумблер в сайдбаре | **PASS** | клик: `html.className "" → "dark"`, `localStorage['yazi:theme'] null → "dark"`, `body` bg `rgb(245,246,250) → rgb(11,16,32)`; повторный клик возвращает `""`/`light` |
 | 2 | Тумблер в топбаре редактора | **PASS** | `/editor/<p>/<pg>`: `class "dark" → ""`, stored `dark → light`, `title` меняется на «Тёмная тема», иконка Moon↔Sun перерисовывается (`theme-toggle.tsx:19-29`) |
 | 3 | Сохранение после reload | **PASS** | reload `/projects`: `<html class="dark">`, stored `dark`, `body` `rgb(11,16,32)` — то же в редакторе |
 | 4 | Фолбэк на системную тему | **PASS** | stored пуст + `prefers-color-scheme: dark` → `class="dark"`, bg `rgb(11,16,32)`; `light` → `class=""`, bg `rgb(245,246,250)` (`providers.tsx:10-12,22`) |
@@ -38,6 +38,6 @@
 
 ## Рекомендации
 
-1. **Убрать вспышку:** inline-скрипт в `<head>` root layout (или `next-themes` с `attribute="class"`, `storageKey="dalmg:theme"`, `defaultTheme="system"`, `disableTransitionOnChange`), `suppressHydrationWarning` на `<html>`; `Providers` оставить только для auth.
+1. **Убрать вспышку:** inline-скрипт в `<head>` root layout (или `next-themes` с `attribute="class"`, `storageKey="yazi:theme"`, `defaultTheme="system"`, `disableTransitionOnChange`), `suppressHydrationWarning` на `<html>`; `Providers` оставить только для auth.
 2. **Заменить слой `!important` на токены:** `bg-surface/bg-panel/text-muted` (CSS-переменные с `.dark`-значениями) или `dark:`-классы в компонентах; как минимум добавить `dark:bg-white/10`, `dark:text-slate-200` для `bg-white/90` и палитр `*-50`, и убрать `!important`, иначе `dark:`-утилиты не работают.
 3. **Поднять контраст мелкого текста:** `.dark .text-slate-400 → #94a3b8`, активная вкладка редактора `text-brand-600 → dark:text-brand-300` (сейчас 2.64:1), футер/rev — `text-slate-300`; проверить AA 4.5 для 10-11 px.

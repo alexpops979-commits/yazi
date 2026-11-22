@@ -2,7 +2,7 @@
 
 const { contextBridge, ipcRenderer } = require('electron');
 
-contextBridge.exposeInMainWorld('dalmg', {
+contextBridge.exposeInMainWorld('yazi', {
   setup: {
     defaults: () => ipcRenderer.invoke('setup:defaults'),
     test: (url) => ipcRenderer.invoke('setup:test', url),

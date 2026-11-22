@@ -1,4 +1,4 @@
-# Dalmg — конструктор сайтов (landing page builder)
+# Yazi — конструктор сайтов (landing page builder)
 
 Multi-tenant по архитектуре, single-workspace по умолчанию: визуальный редактор лендингов,
 78 шаблонов, каталог из 1000 идей для GitHub, публикация на поддомены и свои домены.
@@ -56,8 +56,8 @@ Multi-tenant по архитектуре, single-workspace по умолчани
 Нужны **Node.js 22+** и **PostgreSQL 16+** (локально или Neon). Docker не обязателен.
 
 ```bash
-git clone <your-repo> dalmg
-cd dalmg
+git clone <your-repo> yazi
+cd yazi
 
 # 1. зависимости и общие пакеты
 npm install
@@ -90,7 +90,7 @@ Windows: двойной клик по **`start.bat`** — откроет API и 
 npm run db:local   # изолированный PostgreSQL на 5433 (Windows, если установлен PostgreSQL)
 ```
 
-После этого в `.env`: `DATABASE_URL="postgresql://postgres:postgres@127.0.0.1:5433/dalmg?schema=public"`.
+После этого в `.env`: `DATABASE_URL="postgresql://postgres:postgres@127.0.0.1:5433/yazi?schema=public"`.
 
 ### Полезные команды
 
@@ -126,7 +126,7 @@ packages/
 
 ### Как устроена изоляция
 
-Каждая тенант-таблица содержит `tenantId`. Клиент `@dalmg/db` — расширение Prisma, которое
+Каждая тенант-таблица содержит `tenantId`. Клиент `@yazi/db` — расширение Prisma, которое
 подставляет `tenantId` в `where` каждого запроса и бросает ошибку без контекста.
 Контекст задаёт middleware через `AsyncLocalStorage`, а `TenantGuard` проверяет членство.
 В single-workspace режиме контекст всегда указывает на одно рабочее пространство.
@@ -172,13 +172,13 @@ Responsive-значения: `base → tablet → mobile`. CSS генериру�
 
 ```bash
 npm run desktop            # запуск из исходников
-npm run desktop:pack       # portable: apps/desktop/release/Dalmg-win-x64 + zip
-npm run desktop:installer  # NSIS: apps/desktop/release/Dalmg-Setup-1.0.0.exe
+npm run desktop:pack       # portable: apps/desktop/release/Yazi-win-x64 + zip
+npm run desktop:installer  # NSIS: apps/desktop/release/Yazi-Setup-1.0.0.exe
 npm run icon               # иконка из apps/desktop/build/icon.svg
 ```
 
 Приложение умеет запускать локальный сервер (`npm run dev`) при старте, хранит настройки в
-`%APPDATA%\Dalmg\config.json`, логи — в `%APPDATA%\Dalmg\logs`. Иконка воспроизводит референс:
+`%APPDATA%\Yazi\config.json`, логи — в `%APPDATA%\Yazi\logs`. Иконка воспроизводит референс:
 градиентный squircle, окно браузера, блок с `T` и три здания.
 
 ## Тесты и CI

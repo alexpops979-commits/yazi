@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { migrateDocument, parseDocument, type PageDocument } from '@dalmg/page-schema';
+import { migrateDocument, parseDocument, type PageDocument } from '@yazi/page-schema';
 import { PrismaService } from '../../common/prisma.service';
 import { NotFoundException } from '../../common/errors';
-import type { TemplateSummary } from '@dalmg/contracts';
+import type { TemplateSummary } from '@yazi/contracts';
 
 @Injectable()
 export class TemplatesService {

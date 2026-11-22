@@ -32,7 +32,7 @@
 |---|---|---|---|
 | Drag-and-drop редактор | ✅ | `editor/editor-shell.tsx` | dnd-kit: палитра → canvas, перемещение между контейнерами |
 | Responsive preview | ✅ | `blocks/css.ts`, device-switch | Container queries: переключение устройства реально меняет раскладку |
-| Собственные домены | ✅ | `modules/domains` | TXT `_dalmg-verify`, CNAME-фолбэк, primary-домен. SSL выдаёт хостинг |
+| Собственные домены | ✅ | `modules/domains` | TXT `_yazi-verify`, CNAME-фолбэк, primary-домен. SSL выдаёт хостинг |
 | SEO-настройки | ✅ | `Project.seo`, `Page.seo` | title/description/OG/favicon/canonical/noindex, sitemap.xml, robots.txt |
 | Публикация страниц | ✅ | `POST /pages/:id/publish` | Плюс publish-all для проекта |
 | Версионирование | ✅ | `PageVersion` | Версия на каждую публикацию, список, восстановление в черновик |

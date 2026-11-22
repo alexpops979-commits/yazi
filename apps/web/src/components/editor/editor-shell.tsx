@@ -18,8 +18,8 @@ import {
   Tablet,
   Undo2,
 } from 'lucide-react';
-import type { PageDetail, ProjectSummary } from '@dalmg/contracts';
-import { findNode } from '@dalmg/page-schema';
+import type { PageDetail, ProjectSummary } from '@yazi/contracts';
+import { findNode } from '@yazi/page-schema';
 import { getBlockDefinition } from '@/blocks/registry';
 import { Alert, Badge, Button, Modal, Spinner, cn } from '@/components/ui';
 import { ThemeToggle } from '@/components/theme-toggle';

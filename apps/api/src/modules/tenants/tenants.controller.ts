@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
-import { createTenantSchema, inviteMemberSchema, MEMBERSHIP_ROLES, updateTenantSchema } from '@dalmg/contracts';
+import { createTenantSchema, inviteMemberSchema, MEMBERSHIP_ROLES, updateTenantSchema } from '@yazi/contracts';
 import { AuthGuard, CurrentUser, MinRole, TenantGuard, TenantId, ZodValidationPipe, type AuthUserContext } from '../../common/guards';
 import { TenantsService } from './tenants.service';
 

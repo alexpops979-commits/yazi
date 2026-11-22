@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import type { LoginInput, MeResponse, RegisterInput, TenantSummary, UpdateProfileInput } from '@dalmg/contracts';
-import { hashPassword, verifyPassword } from '@dalmg/db';
+import type { LoginInput, MeResponse, RegisterInput, TenantSummary, UpdateProfileInput } from '@yazi/contracts';
+import { hashPassword, verifyPassword } from '@yazi/db';
 import { PrismaService } from '../../common/prisma.service';
 import { RedisService } from '../../common/redis.service';
 import { AuditService } from '../../common/audit.service';

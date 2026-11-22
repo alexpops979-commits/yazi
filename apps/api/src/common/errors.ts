@@ -6,7 +6,7 @@ import {
   Logger,
   type ExceptionFilter,
 } from '@nestjs/common';
-import { Prisma, TenantScopeError } from '@dalmg/db';
+import { Prisma, TenantScopeError } from '@yazi/db';
 import { ZodError } from 'zod';
 import type { Response } from 'express';
 

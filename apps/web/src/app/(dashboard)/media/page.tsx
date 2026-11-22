@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { Copy, Trash2, Upload } from 'lucide-react';
-import type { MediaAssetSummary } from '@dalmg/contracts';
+import type { MediaAssetSummary } from '@yazi/contracts';
 import { Alert, Button, Card, Spinner } from '@/components/ui';
 import { apiForm } from '@/lib/api';
 import { useApi, useApiForm } from '@/lib/auth';

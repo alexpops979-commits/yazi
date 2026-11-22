@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { Check, ChevronDown, Github, Lightbulb, Sparkles } from 'lucide-react';
-import type { ProjectSummary, TemplateSummary } from '@dalmg/contracts';
+import type { ProjectSummary, TemplateSummary } from '@yazi/contracts';
 import { Alert, Badge, Button, Card, Input, Spinner, cn } from '@/components/ui';
 import { useApi } from '@/lib/auth';
 import { errorMessage, useAsync } from '@/lib/hooks';

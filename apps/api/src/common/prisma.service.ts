@@ -1,5 +1,5 @@
 import { Injectable, OnModuleDestroy } from '@nestjs/common';
-import { prisma, prismaRaw, type Db } from '@dalmg/db';
+import { prisma, prismaRaw, type Db } from '@yazi/db';
 
 @Injectable()
 export class PrismaService implements OnModuleDestroy {

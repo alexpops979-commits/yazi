@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowRight, LayoutTemplate } from 'lucide-react';
-import type { ProjectSummary, TemplateSummary } from '@dalmg/contracts';
+import type { ProjectSummary, TemplateSummary } from '@yazi/contracts';
 import { Alert, Badge, Button, Card, Field, Input, Modal, Spinner, cn } from '@/components/ui';
 import { useApi } from '@/lib/auth';
 import { errorMessage, slugifyClient, useAsync } from '@/lib/hooks';

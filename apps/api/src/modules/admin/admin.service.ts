@@ -1,5 +1,5 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import type { AdminStats, AdminUserRow, PlanCode, PlanSummary } from '@dalmg/contracts';
+import type { AdminStats, AdminUserRow, PlanCode, PlanSummary } from '@yazi/contracts';
 import { PrismaService } from '../../common/prisma.service';
 import { NotFoundException, ConflictException } from '../../common/errors';
 import { AuditService } from '../../common/audit.service';

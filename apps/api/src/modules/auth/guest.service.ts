@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { hashPassword, randomToken, runWithTenant } from '@dalmg/db';
+import { hashPassword, randomToken, runWithTenant } from '@yazi/db';
 import { PrismaService } from '../../common/prisma.service';
 import { AuthService } from './auth.service';
 import { ProjectsService } from '../projects/projects.service';
@@ -22,7 +22,7 @@ export class GuestService {
 
   async createGuest() {
     const suffix = randomSuffix(8);
-    const email = `guest-${suffix}@demo.dalmg.dev`;
+    const email = `guest-${suffix}@demo.yazi.dev`;
 
     const user = await this.prisma.raw.user.create({
       data: {

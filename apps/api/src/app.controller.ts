@@ -19,7 +19,7 @@ export class AppController {
     }
     return {
       ok: database === 'ok',
-      service: 'dalmg-api',
+      service: 'yazi-api',
       database,
       mode: env.singleWorkspace ? 'single-workspace' : 'multi-tenant',
       siteDomain: env.siteDomain,

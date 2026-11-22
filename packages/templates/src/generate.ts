@@ -1,4 +1,4 @@
-import { createId, DEFAULT_THEME, type PageDocument, type PageNode, type StyleProps, type Theme } from '@dalmg/page-schema';
+import { createId, DEFAULT_THEME, type PageDocument, type PageNode, type StyleProps, type Theme } from '@yazi/page-schema';
 
 /* ── builders ───────────────────────────────────────────── */
 

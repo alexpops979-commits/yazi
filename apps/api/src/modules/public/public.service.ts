@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { migrateDocument } from '@dalmg/page-schema';
-import { DEFAULT_LIMITS, UNLIMITED_LIMITS, type PlanLimits, type PublicSitePayload, type Seo } from '@dalmg/contracts';
+import { migrateDocument } from '@yazi/page-schema';
+import { DEFAULT_LIMITS, UNLIMITED_LIMITS, type PlanLimits, type PublicSitePayload, type Seo } from '@yazi/contracts';
 import { PrismaService } from '../../common/prisma.service';
 import { SiteCacheService } from '../../common/site-cache.service';
 import { verifyPreviewToken } from '../../common/crypto';

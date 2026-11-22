@@ -1,5 +1,5 @@
 import type { ComponentType, ReactNode } from 'react';
-import type { Device, PageNode, StyleProps, Theme } from '@dalmg/page-schema';
+import type { Device, PageNode, StyleProps, Theme } from '@yazi/page-schema';
 
 export type RenderMode = 'editor' | 'preview' | 'published';
 

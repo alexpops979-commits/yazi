@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'" />
-<title>Dalmg</title>
+<title>Yazi</title>
 <style>
   * { box-sizing: border-box; }
   html, body { height: 100%; margin: 0; }
@@ -28,8 +28,8 @@
 </style>
 </head>
 <body>
-  <img src="../build/icon-256.png" alt="Dalmg" />
-  <h1>Dalmg</h1>
+  <img src="../build/icon-256.png" alt="Yazi" />
+  <h1>Yazi</h1>
   <div class="bar"><span></span></div>
   <div class="status" id="status">Подготовка…</div>
   <button id="setupBtn" type="button">Настройки сервера</button>
@@ -37,10 +37,10 @@
   <script>
     const statusEl = document.getElementById('status');
     const setupBtn = document.getElementById('setupBtn');
-    window.dalmg.onStatus((text) => {
+    window.yazi.onStatus((text) => {
       statusEl.textContent = text;
     });
-    setupBtn.addEventListener('click', () => window.dalmg.openSetup());
+    setupBtn.addEventListener('click', () => window.yazi.openSetup());
     setTimeout(() => { setupBtn.style.display = 'inline-block'; }, 12000);
   </script>
 </body>

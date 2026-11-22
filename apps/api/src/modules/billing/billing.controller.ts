@@ -10,7 +10,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import type { Request } from 'express';
-import { checkoutSchema } from '@dalmg/contracts';
+import { checkoutSchema } from '@yazi/contracts';
 import type { z } from 'zod';
 import { AuthGuard, CurrentUser, MinRole, Public, TenantGuard, TenantId, ZodValidationPipe, type AuthUserContext } from '../../common/guards';
 import { BillingService } from './billing.service';

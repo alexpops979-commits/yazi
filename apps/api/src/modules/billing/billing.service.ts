@@ -6,8 +6,8 @@ import type {
   PlanLimits,
   PlanSummary,
   SubscriptionSummary,
-} from '@dalmg/contracts';
-import { planLimitsSchema } from '@dalmg/contracts';
+} from '@yazi/contracts';
+import { planLimitsSchema } from '@yazi/contracts';
 import { PrismaService } from '../../common/prisma.service';
 import { EntitlementsService } from '../../common/entitlements.service';
 import { AuditService } from '../../common/audit.service';

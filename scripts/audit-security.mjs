@@ -48,7 +48,7 @@ async function main() {
   const singleWorkspace = health.mode === 'single-workspace';
 
   const demo = new Client();
-  const demoMe = await demo.expect('/auth/login', { method: 'POST', body: { email: 'demo@dalmg.dev', password: 'demo12345' } }, 201, 'demo login');
+  const demoMe = await demo.expect('/auth/login', { method: 'POST', body: { email: 'demo@yazi.dev', password: 'demo12345' } }, 201, 'demo login');
   demo.tenantId = demoMe.tenants[0].id;
 
   /* ── invitation email binding ─────────────────────────── */
@@ -74,7 +74,7 @@ async function main() {
     console.log('· single-workspace mode: session revocation checks skipped (accounts disabled)');
   } else {
     const session = new Client();
-    await session.expect('/auth/login', { method: 'POST', body: { email: 'demo@dalmg.dev', password: 'demo12345' } }, 201, 'session login');
+    await session.expect('/auth/login', { method: 'POST', body: { email: 'demo@yazi.dev', password: 'demo12345' } }, 201, 'session login');
     await session.expect('/auth/me', {}, 200, 'session valid');
     await session.expect('/auth/logout', { method: 'POST', body: {} }, 201, 'logout');
     await session.expect('/auth/me', {}, 401, 'access token revoked after logout');
@@ -82,7 +82,7 @@ async function main() {
 
   /* ── strict document validation ───────────────────────── */
   const demo2 = new Client();
-  const demo2Me = await demo2.expect('/auth/login', { method: 'POST', body: { email: 'demo@dalmg.dev', password: 'demo12345' } }, 201, 'demo re-login');
+  const demo2Me = await demo2.expect('/auth/login', { method: 'POST', body: { email: 'demo@yazi.dev', password: 'demo12345' } }, 201, 'demo re-login');
   demo2.tenantId = demo2Me.tenants[0].id;
 
   const projects = await demo2.expect('/projects', {}, 200, 'projects');

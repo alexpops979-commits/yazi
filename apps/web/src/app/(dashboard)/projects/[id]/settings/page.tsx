@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, CheckCircle2, Copy, Globe, Plus, RefreshCw, Trash2 } from 'lucide-react';
-import type { DomainSummary, ProjectSummary } from '@dalmg/contracts';
+import type { DomainSummary, ProjectSummary } from '@yazi/contracts';
 import { Alert, Badge, Button, Card, Field, Input, Modal, Textarea } from '@/components/ui';
 import { useApi } from '@/lib/auth';
 import { errorMessage, useAsync } from '@/lib/hooks';

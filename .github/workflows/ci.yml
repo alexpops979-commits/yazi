@@ -16,7 +16,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: dalmg
+          POSTGRES_DB: yazi
         ports:
           - 5432:5432
         options: >-
@@ -26,15 +26,15 @@ jobs:
           --health-retries 10
 
     env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/dalmg?schema=public
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/yazi?schema=public
       SITE_DOMAIN: lvh.me:3002
       APP_HOST: localhost:3002
       NEXT_PUBLIC_APP_URL: http://localhost:3002
       JWT_SECRET: ci-secret-0123456789abcdef0123456789abcdef
       INTERNAL_TOKEN: ci-internal-token
-      ADMIN_EMAIL: admin@dalmg.dev
+      ADMIN_EMAIL: admin@yazi.dev
       ADMIN_PASSWORD: admin12345
-      DEMO_EMAIL: demo@dalmg.dev
+      DEMO_EMAIL: demo@yazi.dev
       DEMO_PASSWORD: demo12345
       # Do not download the Electron runtime in CI
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
@@ -80,10 +80,10 @@ jobs:
         run: node scripts/smoke.mjs
 
       - name: Build web
-        run: npm run build -w @dalmg/web
+        run: npm run build -w @yazi/web
 
       - name: Build API
-        run: npm run build -w @dalmg/api
+        run: npm run build -w @yazi/api
 
       - name: Upload API logs on failure
         if: failure()

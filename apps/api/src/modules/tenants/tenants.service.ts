@@ -1,6 +1,6 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import type { MembershipRole, TenantMember, TenantSummary } from '@dalmg/contracts';
-import { randomToken } from '@dalmg/db';
+import type { MembershipRole, TenantMember, TenantSummary } from '@yazi/contracts';
+import { randomToken } from '@yazi/db';
 import { PrismaService } from '../../common/prisma.service';
 import { ConflictException, NotFoundException } from '../../common/errors';
 import { randomSuffix, slugify } from '../../common/crypto';

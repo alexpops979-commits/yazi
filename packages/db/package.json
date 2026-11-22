@@ -1,5 +1,5 @@
 {
-  "name": "@dalmg/db",
+  "name": "@yazi/db",
   "version": "0.1.0",
   "private": true,
   "main": "dist/index.js",
@@ -15,8 +15,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@dalmg/page-schema": "*",
-    "@dalmg/templates": "*",
+    "@yazi/page-schema": "*",
+    "@yazi/templates": "*",
     "@prisma/client": "^6.2.1",
     "dotenv": "^16.4.7"
   },

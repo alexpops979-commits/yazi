@@ -1,9 +1,9 @@
 {
-  "name": "@dalmg/desktop",
+  "name": "@yazi/desktop",
   "version": "1.0.0",
   "private": true,
-  "description": "Dalmg — настольное приложение конструктора сайтов",
-  "author": "Dalmg",
+  "description": "Yazi — настольное приложение конструктора сайтов",
+  "author": "Yazi",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
@@ -15,9 +15,9 @@
     "electron-builder": "^25.1.8"
   },
   "build": {
-    "appId": "dev.dalmg.builder",
-    "productName": "Dalmg",
-    "copyright": "© 2026 Dalmg",
+    "appId": "dev.yazi.builder",
+    "productName": "Yazi",
+    "copyright": "© 2026 Yazi",
     "electronVersion": "33.4.11",
     "electronDist": ".electron-dist",
     "directories": {
@@ -51,7 +51,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Dalmg",
+      "shortcutName": "Yazi",
       "installerIcon": "build/icon.ico",
       "uninstallerIcon": "build/icon.ico",
       "installerHeaderIcon": "build/icon.ico",

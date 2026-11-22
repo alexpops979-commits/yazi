@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'" />
-<title>Dalmg — настройка</title>
+<title>Yazi — настройка</title>
 <style>
   :root {
     --bg: #0b1020;
@@ -99,9 +99,9 @@
 <body>
   <div class="card">
     <div class="top">
-      <img src="../build/icon-256.png" alt="Dalmg" />
+      <img src="../build/icon-256.png" alt="Yazi" />
       <div>
-        <h1>Dalmg</h1>
+        <h1>Yazi</h1>
         <div class="sub">Конструктор сайтов · настольное приложение</div>
       </div>
     </div>
@@ -127,7 +127,7 @@
       <label class="field" id="dirField">
         <span class="label">Папка проекта</span>
         <div class="row">
-          <input id="projectDir" type="text" placeholder="C:\Users\you\dalmg" spellcheck="false" />
+          <input id="projectDir" type="text" placeholder="C:\Users\you\yazi" spellcheck="false" />
           <button class="ghost" id="pickBtn" type="button">Выбрать…</button>
         </div>
       </label>
@@ -172,7 +172,7 @@
     }
 
     (async () => {
-      const defaults = await window.dalmg.setup.defaults();
+      const defaults = await window.yazi.setup.defaults();
       els.serverUrl.value = defaults.serverUrl || '';
       els.projectDir.value = defaults.projectDir || '';
       els.launchLocal.checked = Boolean(defaults.launchLocal);
@@ -188,17 +188,17 @@
     els.testBtn.addEventListener('click', async () => {
       els.testBtn.disabled = true;
       setStatus('Проверяем…');
-      const result = await window.dalmg.setup.test(els.serverUrl.value.trim());
+      const result = await window.yazi.setup.test(els.serverUrl.value.trim());
       setStatus(result.message, result.ok ? 'ok' : 'err');
       els.testBtn.disabled = false;
     });
 
     els.pickBtn.addEventListener('click', async () => {
-      const dir = await window.dalmg.setup.pickProjectDir();
+      const dir = await window.yazi.setup.pickProjectDir();
       if (dir) els.projectDir.value = dir;
     });
 
-    els.cancelBtn.addEventListener('click', () => window.dalmg.setup.cancel());
+    els.cancelBtn.addEventListener('click', () => window.yazi.setup.cancel());
 
     els.saveBtn.addEventListener('click', async () => {
       const serverUrl = els.serverUrl.value.trim();
@@ -212,7 +212,7 @@
       }
       els.saveBtn.disabled = true;
       setStatus('Сохраняем…');
-      await window.dalmg.setup.save({
+      await window.yazi.setup.save({
         serverUrl,
         projectDir: els.projectDir.value.trim(),
         launchLocal: els.launchLocal.checked,

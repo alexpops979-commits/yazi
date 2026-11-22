@@ -1,4 +1,4 @@
-import { FONT_OPTIONS, walkNodes, type PageDocument, type PageNode, type StyleProps, type Theme } from '@dalmg/page-schema';
+import { FONT_OPTIONS, walkNodes, type PageDocument, type PageNode, type StyleProps, type Theme } from '@yazi/page-schema';
 
 /**
  * All visual rules for published pages and the editor canvas live here:

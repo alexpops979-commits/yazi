@@ -3,7 +3,7 @@ import path from 'node:path';
 import express from 'express';
 import { NestFactory } from '@nestjs/core';
 import type { NestExpressApplication } from '@nestjs/platform-express';
-import { runWithoutTenant, runWithTenant } from '@dalmg/db';
+import { runWithoutTenant, runWithTenant } from '@yazi/db';
 import { AppModule } from './app.module';
 import { env } from './env';
 import { AllExceptionsFilter } from './common/errors';

@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { promises as dns } from 'node:dns';
-import { randomToken } from '@dalmg/db';
-import type { DomainSummary } from '@dalmg/contracts';
+import { randomToken } from '@yazi/db';
+import type { DomainSummary } from '@yazi/contracts';
 import { PrismaService } from '../../common/prisma.service';
 import { EntitlementsService } from '../../common/entitlements.service';
 import { SiteCacheService } from '../../common/site-cache.service';
@@ -9,7 +9,7 @@ import { AuditService } from '../../common/audit.service';
 import { ConflictException, NotFoundException } from '../../common/errors';
 import { env } from '../../env';
 
-const VERIFY_PREFIX = '_dalmg-verify';
+const VERIFY_PREFIX = '_yazi-verify';
 
 @Injectable()
 export class DomainsService {

@@ -6,8 +6,8 @@ import {
   pruneUnknownBlocks,
   type PageDocument,
   type PageNode,
-} from '@dalmg/page-schema';
-import { BLOCK_TYPES, type CreatePageInput, type PageDetail, type PageSummary, type PageVersionSummary, type Seo, type UpdatePageInput } from '@dalmg/contracts';
+} from '@yazi/page-schema';
+import { BLOCK_TYPES, type CreatePageInput, type PageDetail, type PageSummary, type PageVersionSummary, type Seo, type UpdatePageInput } from '@yazi/contracts';
 import { PrismaService } from '../../common/prisma.service';
 import { EntitlementsService } from '../../common/entitlements.service';
 import { SiteCacheService } from '../../common/site-cache.service';

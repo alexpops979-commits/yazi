@@ -34,7 +34,7 @@ async function login() {
   const response = await fetch(`${API}/auth/login`, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ email: 'demo@dalmg.dev', password: 'demo12345' }),
+    body: JSON.stringify({ email: 'demo@yazi.dev', password: 'demo12345' }),
   });
   if (!response.ok) throw new Error(`login failed: ${response.status}`);
   const cookies = response.headers.getSetCookie().map((cookie) => cookie.split(';')[0]).join('; ');

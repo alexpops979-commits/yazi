@@ -32,7 +32,7 @@ import {
   Users,
   Zap,
 } from 'lucide-react';
-import type { PageNode } from '@dalmg/page-schema';
+import type { PageNode } from '@yazi/page-schema';
 import { blockClass, num, parseFields, parseLinks, str, type BlockDefinition, type RenderContext } from './types';
 
 const ICON_MAP = {

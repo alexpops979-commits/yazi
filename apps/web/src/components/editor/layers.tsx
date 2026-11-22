@@ -2,7 +2,7 @@
 
 import { useDraggable } from '@dnd-kit/core';
 import { ChevronRight, GripVertical, Trash2 } from 'lucide-react';
-import type { PageNode } from '@dalmg/page-schema';
+import type { PageNode } from '@yazi/page-schema';
 import { getBlockDefinition } from '@/blocks/registry';
 import { cn } from '@/components/ui';
 import { useEditorStore } from './store';

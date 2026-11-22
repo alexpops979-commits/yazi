@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-import type { MeResponse, TenantSummary } from '@dalmg/contracts';
+import type { MeResponse, TenantSummary } from '@yazi/contracts';
 import { api, apiForm, type ApiOptions } from './api';
 
 type Bootstrap = {
@@ -73,8 +73,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return {
       user: {
         id: 'local',
-        email: 'local@dalmg',
-        name: 'Dalmg',
+        email: 'local@yazi',
+        name: 'Yazi',
         avatarUrl: null,
         role: 'SUPER_ADMIN',
         emailVerifiedAt: null,

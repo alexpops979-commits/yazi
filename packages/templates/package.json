@@ -1,5 +1,5 @@
 {
-  "name": "@dalmg/templates",
+  "name": "@yazi/templates",
   "version": "0.1.0",
   "private": true,
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@dalmg/page-schema": "*"
+    "@yazi/page-schema": "*"
   },
   "devDependencies": {
     "typescript": "^5.7.3"

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { PageDocument } from '@dalmg/page-schema';
+import type { PageDocument } from '@yazi/page-schema';
 
 /* ────────────────────────────────────────────────────────────
  *  Roles & plans

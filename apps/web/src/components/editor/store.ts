@@ -11,7 +11,7 @@ import {
   type PageNode,
   type StyleProps,
   type Theme,
-} from '@dalmg/page-schema';
+} from '@yazi/page-schema';
 import { getBlockDefinition } from '@/blocks/registry';
 
 export type DropPosition = 'before' | 'after' | 'inside';
