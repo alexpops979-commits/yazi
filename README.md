@@ -4,6 +4,8 @@ Multi-tenant по архитектуре, single-workspace по умолчани
 78 шаблонов, каталог из 1000 идей для GitHub, публикация на поддомены и свои домены.
 Без экрана входа — приложение открывается сразу в рабочем пространстве.
 
+**Репозиторий:** https://github.com/alexpops979-commits/yazi
+
 ![Dashboard](docs/screenshots/dashboard-light.jpg)
 
 | Редактор | Идеи для GitHub |
@@ -190,8 +192,22 @@ node scripts/smoke-web.mjs      # SSR, preview, sitemap, robots
 node scripts/audit-security.mjs # инъекции, размеры, валидация, rate limit
 ```
 
-CI (`.github/workflows/ci.yml`) поднимает PostgreSQL, применяет схему, сидит демо-данные,
-запускает API-смоук, собирает web и API.
+CI-пайплайн лежит в [`docs/ci.yml`](docs/ci.yml): поднимает PostgreSQL, применяет схему,
+сидит демо-данные, запускает API-смоук, собирает web и API.
+
+Токен, которым выполнялся первый пуш, не имел scope `workflow`, поэтому файл не добавлен
+в `.github/workflows` автоматически. Чтобы включить CI:
+
+```bash
+mkdir -p .github/workflows
+cp docs/ci.yml .github/workflows/ci.yml
+git add .github/workflows/ci.yml
+git commit -m "ci: enable workflow"
+git push
+```
+
+Пуш с workflow-файлом требует токен со scope **`workflow`** (или добавьте файл через
+веб-интерфейс GitHub: Actions → New workflow).
 
 ## Тарифы и монетизация
 
