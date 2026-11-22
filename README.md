@@ -6,6 +6,19 @@ Multi-tenant по архитектуре, single-workspace по умолчани
 
 **Репозиторий:** https://github.com/alexpops979-commits/yazi
 
+### Скачать для Windows
+
+| Файл | Размер | Что это |
+|---|---|---|
+| **[Yazi-Setup-1.0.0.exe](https://github.com/alexpops979-commits/yazi/releases/download/v1.0.0/Yazi-Setup-1.0.0.exe)** | 80 МБ | установщик: ярлыки в «Пуск» и на рабочем столе, деинсталлятор |
+| [Yazi-portable-1.0.0.zip](https://github.com/alexpops979-commits/yazi/releases/download/v1.0.0/Yazi-portable-1.0.0.zip) | 110 МБ | portable-версия без установки |
+
+Все релизы: https://github.com/alexpops979-commits/yazi/releases
+
+> Установщик не подписан сертификатом — SmartScreen может показать «Неизвестный издатель».
+> Приложению нужен сервер Yazi: локальный (`npm run dev`) или развёрнутый экземпляр;
+> адрес задаётся на экране настроек приложения.
+
 ![Dashboard](docs/screenshots/dashboard-light.jpg)
 
 | Редактор | Идеи для GitHub |
@@ -182,6 +195,15 @@ npm run icon               # иконка из apps/desktop/build/icon.svg
 Приложение умеет запускать локальный сервер (`npm run dev`) при старте, хранит настройки в
 `%APPDATA%\Yazi\config.json`, логи — в `%APPDATA%\Yazi\logs`. Иконка воспроизводит референс:
 градиентный squircle, окно браузера, блок с `T` и три здания.
+
+Готовые сборки публикуются в [Releases](https://github.com/alexpops979-commits/yazi/releases):
+`Yazi-Setup-<версия>.exe` (NSIS, ставится в `%LOCALAPPDATA%\Programs\Yazi`) и
+`Yazi-portable-<версия>.zip`. Пересобрать и опубликовать:
+
+```bash
+npm run desktop:pack && npm run desktop:installer
+node scripts/gh-release.mjs      # создаёт тег/релиз и загружает артефакты
+```
 
 ## Тесты и CI
 
