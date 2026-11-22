@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 700" width="1500" height="700" role="img" aria-label="agency-hero">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B0F0C" />
+      <stop offset="100%" stop-color="#1B2A1F" />
+    </linearGradient>
+  </defs>
+  <rect width="1500" height="700" fill="url(#g)" />
+  <circle cx="408" cy="62" r="224" fill="#D5FF4F" opacity="0.19" />
+  <circle cx="1136" cy="77" r="209" fill="#4E7A5A" opacity="0.11" />
+  <circle cx="427" cy="79" r="156" fill="#D5FF4F" opacity="0.09" />
+  <circle cx="82" cy="363" r="152" fill="#4E7A5A" opacity="0.24" />
+  <circle cx="879" cy="555" r="166" fill="#D5FF4F" opacity="0.17" />
+  <circle cx="1455" cy="292" r="287" fill="#4E7A5A" opacity="0.12" />
+  <circle cx="1379" cy="179" r="113" fill="#D5FF4F" opacity="0.17" />
+  <circle cx="1100" cy="554" r="166" fill="#4E7A5A" opacity="0.10" />
+  <rect x="930" y="84" width="390" height="182" rx="45" fill="#D5FF4F" opacity="0.10" transform="rotate(-9 1125 175)" />
+  <path d="M0 602 Q 450 504 825 588 T 1500 546 V 700 H 0 Z" fill="#4E7A5A" opacity="0.14" />
+</svg>

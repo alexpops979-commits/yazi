@@ -1,0 +1,19 @@
+[
+  { "title": "Корпоративный портал на ASP.NET", "category": "web", "difficulty": 6, "backend": true, "frontend": true, "languages": ["C#", "TypeScript"], "summary": "SSO, роли, документы и уведомления для сотрудников." },
+  { "title": "Unity-игра с процедурными уровнями", "category": "games", "difficulty": 7, "backend": false, "frontend": false, "languages": ["C#"], "summary": "Генерация уровней, инвентарь, сохранения и баланс." },
+  { "title": "Spring Boot API маркетплейса", "category": "web", "difficulty": 6, "backend": true, "frontend": false, "languages": ["Java", "SQL"], "summary": "Каталог, заказы, оплата и админ-эндпоинты." },
+  { "title": "Android-приложение доставки", "category": "mobile", "difficulty": 6, "backend": true, "frontend": true, "languages": ["Kotlin", "Java"], "summary": "Каталог, корзина, трекинг заказа и push." },
+  { "title": "Laravel CMS для блога", "category": "web", "difficulty": 5, "backend": true, "frontend": true, "languages": ["PHP", "SQL"], "summary": "Статьи, теги, редактор, роли и SEO." },
+  { "title": "Rails-маркетплейс услуг", "category": "web", "difficulty": 6, "backend": true, "frontend": true, "languages": ["Ruby", "SQL"], "summary": "Исполнители, заказы, отзывы и выплаты." },
+  { "title": "Движок 2D-игры на C++", "category": "games", "difficulty": 8, "backend": false, "frontend": false, "languages": ["C++"], "summary": "Рендер, физика, тайлы и редактор уровней." },
+  { "title": "Flutter-трекер привычек", "category": "mobile", "difficulty": 4, "backend": false, "frontend": true, "languages": ["Dart"], "summary": "Серии, напоминания и офлайн-синхронизация." },
+  { "title": "Realtime-чат на Phoenix", "category": "web", "difficulty": 7, "backend": true, "frontend": true, "languages": ["Elixir", "TypeScript"], "summary": "Каналы, presence, история и модерация." },
+  { "title": "Пайплайн данных на Scala", "category": "data", "difficulty": 7, "backend": true, "frontend": false, "languages": ["Scala", "SQL"], "summary": "Потоковая обработка, агрегации и качество данных." },
+  { "title": "Плагин Neovim на Lua", "category": "devtools", "difficulty": 3, "backend": false, "frontend": false, "languages": ["Lua"], "summary": "Команды, деревья и интеграция с LSP." },
+  { "title": "Парсер выражений на Haskell", "category": "devtools", "difficulty": 6, "backend": false, "frontend": false, "languages": ["Haskell"], "summary": "Лексер, парсер, интерпретатор и тесты." },
+  { "title": "Браузерное расширение на JavaScript", "category": "devtools", "difficulty": 3, "backend": false, "frontend": true, "languages": ["JavaScript"], "summary": "Сохранение вкладок, поиск и синхронизация." },
+  { "title": "Парсер бинарных форматов на C", "category": "devtools", "difficulty": 6, "backend": false, "frontend": false, "languages": ["C"], "summary": "Чтение формата, CLI и устойчивость к ошибкам." },
+  { "title": "CLI-сборщик на Zig", "category": "devtools", "difficulty": 5, "backend": false, "frontend": false, "languages": ["Zig"], "summary": "Быстрая сборка, кэш и кросс-компиляция." },
+  { "title": "Аналитика на Clojure", "category": "data", "difficulty": 6, "backend": true, "frontend": false, "languages": ["Clojure", "SQL"], "summary": "ETL, отчёты и REPL-исследование данных." },
+  { "title": "Дашборд на R/Shiny", "category": "data", "difficulty": 4, "backend": true, "frontend": true, "languages": ["R"], "summary": "Загрузка данных, графики и фильтры." }
+]

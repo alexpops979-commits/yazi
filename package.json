@@ -1,0 +1,46 @@
+{
+  "name": "dalmg",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/api",
+    "apps/web",
+    "apps/desktop",
+    "packages/*"
+  ],
+  "scripts": {
+    "setup": "npm install && npm run build:packages && npm run db:generate",
+    "dev": "concurrently -k -n api,web -c cyan,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev -w @dalmg/api",
+    "dev:web": "npm run dev -w @dalmg/web",
+    "build:packages": "npm run build -w @dalmg/page-schema -w @dalmg/contracts -w @dalmg/templates -w @dalmg/db",
+    "build": "npm run build:packages && npm run build -w @dalmg/api && npm run build -w @dalmg/web",
+    "typecheck": "npm run typecheck -ws --if-present",
+    "db:generate": "npm run generate -w @dalmg/db",
+    "db:push": "npm run push -w @dalmg/db",
+    "db:migrate": "npm run migrate -w @dalmg/db",
+    "db:seed": "npm run seed -w @dalmg/db",
+    "db:studio": "npm run studio -w @dalmg/db",
+    "db:local": "powershell -ExecutionPolicy Bypass -File scripts/dev-db.ps1",
+    "smoke": "node scripts/smoke.mjs",
+    "ideas:export": "node scripts/export-github-ideas.mjs",
+    "db:cleanup-guests": "node scripts/cleanup-guests.mjs",
+    "desktop": "npm run start -w @dalmg/desktop",
+    "desktop:pack": "node scripts/pack-desktop.mjs",
+    "desktop:installer": "node scripts/build-installer.mjs",
+    "desktop:dist": "npm run dist -w @dalmg/desktop",
+    "icon": "node scripts/gen-icon.mjs"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "concurrently": "^9.1.0",
+    "rcedit": "^5.0.2",
+    "typescript": "^5.7.3"
+  },
+  "allowScripts": {
+    "prisma@6.19.3": true,
+    "@prisma/client@6.19.3": true,
+    "@prisma/engines@6.19.3": true,
+    "electron@33.4.11": true
+  }
+}

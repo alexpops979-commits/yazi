@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" width="900" height="700" role="img" aria-label="workshop">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F1EDE7" />
+      <stop offset="100%" stop-color="#E2D8CB" />
+    </linearGradient>
+  </defs>
+  <rect width="900" height="700" fill="url(#g)" />
+  <circle cx="665" cy="540" r="99" fill="#6C7A65" opacity="0.17" />
+  <circle cx="698" cy="135" r="104" fill="#B9C4AE" opacity="0.09" />
+  <circle cx="587" cy="424" r="153" fill="#6C7A65" opacity="0.10" />
+  <circle cx="690" cy="243" r="156" fill="#B9C4AE" opacity="0.22" />
+  <circle cx="2" cy="440" r="99" fill="#6C7A65" opacity="0.15" />
+  <circle cx="672" cy="366" r="111" fill="#B9C4AE" opacity="0.13" />
+  <circle cx="40" cy="95" r="223" fill="#6C7A65" opacity="0.21" />
+  <circle cx="797" cy="501" r="218" fill="#B9C4AE" opacity="0.14" />
+  <rect x="558" y="84" width="234" height="182" rx="27" fill="#6C7A65" opacity="0.10" transform="rotate(-1 675 175)" />
+  <path d="M0 602 Q 270 504 495 588 T 900 546 V 700 H 0 Z" fill="#B9C4AE" opacity="0.14" />
+</svg>

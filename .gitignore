@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.next/
+out/
+.env
+.env.local
+*.log
+apps/api/uploads/
+packages/db/generated/
+.DS_Store
+*.tsbuildinfo
+apps/desktop/release/
+apps/desktop/.electron-dist/
+apps/desktop/.nsis/

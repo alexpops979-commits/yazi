@@ -1,0 +1,22 @@
+[
+  { "title": "Совместный редактор документов", "category": "web", "difficulty": 9, "backend": true, "frontend": true, "languages": ["TypeScript", "SQL"], "summary": "CRDT-текст, курсоры, история версий, офлайн-правки и права доступа." },
+  { "title": "Кинозал для совместного просмотра", "category": "web", "difficulty": 6, "backend": true, "frontend": true, "languages": ["TypeScript"], "summary": "Комнаты, синхронизация плеера, чат, очередь видео и модерация." },
+  { "title": "Мигратор CI-пайплайнов", "category": "devtools", "difficulty": 6, "backend": false, "frontend": false, "languages": ["Python"], "summary": "Конвертация GitHub Actions в GitLab CI с разбором выражений и отчётом о потерях." },
+  { "title": "Менеджер git worktree", "category": "devtools", "difficulty": 3, "backend": false, "frontend": false, "languages": ["Rust"], "summary": "Worktree под каждую задачу, автозапуск хуков и очистка после мержа." },
+  { "title": "Генератор тестов по диффу", "category": "ai", "difficulty": 7, "backend": true, "frontend": false, "languages": ["Python", "TypeScript"], "summary": "Анализ изменений, предложение тест-кейсов и отчёт о приросте покрытия." },
+  { "title": "Модерация изображений для маркетплейса", "category": "ai", "difficulty": 6, "backend": true, "frontend": true, "languages": ["Python"], "summary": "Классификация NSFW, очередь ручной проверки и апелляции продавцов." },
+  { "title": "Версионирование датасетов", "category": "data", "difficulty": 7, "backend": true, "frontend": true, "languages": ["Python", "SQL"], "summary": "Снапшоты, построчный diff, ленивые клоны и воспроизводимость экспериментов." },
+  { "title": "Анализ безопасности миграций", "category": "data", "difficulty": 6, "backend": false, "frontend": false, "languages": ["Go"], "summary": "Блокировки, NOT NULL, бэкфилл и план отката для SQL-миграций." },
+  { "title": "Офлайн-карты для походов", "category": "mobile", "difficulty": 6, "backend": false, "frontend": true, "languages": ["Kotlin", "Swift"], "summary": "Офлайн-тайлы, GPX-треки, высотный профиль и расход батареи." },
+  { "title": "Трекер лекарств", "category": "mobile", "difficulty": 2, "backend": false, "frontend": true, "languages": ["Kotlin"], "summary": "Расписание приёма, локальные напоминания и история соблюдения." },
+  { "title": "Гексагональная стратегия", "category": "games", "difficulty": 7, "backend": false, "frontend": false, "languages": ["TypeScript"], "summary": "Пошаговые ходы, туман войны, ИИ-противник и генератор карт." },
+  { "title": "Симулятор экосистемы", "category": "games", "difficulty": 3, "backend": false, "frontend": false, "languages": ["TypeScript"], "summary": "Клеточная автоматика, баланс видов и графики популяций." },
+  { "title": "Оркестратор локального окружения", "category": "infra", "difficulty": 6, "backend": true, "frontend": false, "languages": ["Go"], "summary": "Граф зависимостей сервисов, health-checks, порты и общий поток логов." },
+  { "title": "Аудитор IAM-политик", "category": "infra", "difficulty": 7, "backend": true, "frontend": true, "languages": ["Python", "TypeScript"], "summary": "Разбор политик, поиск избыточных прав, дифф между средами и отчёт." },
+  { "title": "Тренажёр слуха и нот", "category": "education", "difficulty": 3, "backend": false, "frontend": true, "languages": ["TypeScript"], "summary": "Интервалы, аккорды, MIDI-ввод и статистика ошибок." },
+  { "title": "Объяснение ошибок компилятора", "category": "education", "difficulty": 5, "backend": true, "frontend": true, "languages": ["Python", "TypeScript"], "summary": "Разбор ошибок сборки, человеческое объяснение и ссылки на документацию." },
+  { "title": "База знаний поддержки", "category": "productivity", "difficulty": 5, "backend": true, "frontend": true, "languages": ["TypeScript", "SQL"], "summary": "Статьи с версиями, полнотекстовый поиск и встраиваемый виджет." },
+  { "title": "Планировщик отпусков команды", "category": "productivity", "difficulty": 4, "backend": true, "frontend": true, "languages": ["TypeScript", "SQL"], "summary": "Календарь отсутствий, лимиты, согласования и экспорт в ICS." },
+  { "title": "Аудит доступности компонентов", "category": "oss", "difficulty": 5, "backend": false, "frontend": true, "languages": ["TypeScript"], "summary": "Контраст, ARIA и клавиатурная навигация с отчётом для CI." },
+  { "title": "Быстрый поиск по файлам", "category": "oss", "difficulty": 5, "backend": false, "frontend": false, "languages": ["Rust"], "summary": "Инкрементальный индекс, regex-поиск и правила игнорирования." }
+]

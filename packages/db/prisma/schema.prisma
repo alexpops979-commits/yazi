@@ -1,0 +1,330 @@
+// Multi-tenant SaaS Website Builder — data model
+// Every tenant-owned table carries `tenantId` so isolation can be enforced in one place
+// (see packages/db/src/tenant.ts), not in every controller.
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  SUPER_ADMIN
+}
+
+enum MembershipRole {
+  OWNER
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+enum ProjectStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum PageStatus {
+  DRAFT
+  PUBLISHED
+}
+
+enum DomainKind {
+  SUBDOMAIN
+  CUSTOM
+}
+
+enum DomainStatus {
+  PENDING
+  VERIFIED
+  FAILED
+}
+
+enum PlanInterval {
+  MONTH
+  YEAR
+}
+
+enum SubscriptionStatus {
+  TRIALING
+  ACTIVE
+  PAST_DUE
+  CANCELED
+  INCOMPLETE
+}
+
+model User {
+  id              String       @id @default(cuid())
+  email           String       @unique
+  passwordHash    String
+  name            String
+  avatarUrl       String?
+  role            UserRole     @default(USER)
+  status          String       @default("active")
+  emailVerifiedAt DateTime?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  memberships     Membership[]
+  auditLogs       AuditLog[]
+  pageVersions    PageVersion[]
+  publishEvents   PublishEvent[]
+
+  @@index([createdAt])
+}
+
+model Tenant {
+  id               String          @id @default(cuid())
+  name             String
+  slug             String          @unique
+  planCode         String          @default("free")
+  stripeCustomerId String?         @unique
+  trialEndsAt      DateTime?
+  settings         Json            @default("{}")
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  memberships      Membership[]
+  projects         Project[]
+  subscription     Subscription?
+  invitations      Invitation[]
+  auditLogs        AuditLog[]
+  media            MediaAsset[]
+  templates        Template[]
+  publishEvents    PublishEvent[]
+
+  @@index([createdAt])
+}
+
+model Membership {
+  id        String         @id @default(cuid())
+  tenantId  String
+  userId    String
+  role      MembershipRole @default(EDITOR)
+  createdAt DateTime       @default(now())
+  tenant    Tenant         @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([tenantId, userId])
+  @@index([userId])
+  @@index([tenantId])
+}
+
+model Invitation {
+  id         String         @id @default(cuid())
+  tenantId   String
+  email      String
+  role       MembershipRole @default(EDITOR)
+  token      String         @unique
+  expiresAt  DateTime
+  acceptedAt DateTime?
+  createdAt  DateTime       @default(now())
+  tenant     Tenant         @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@unique([tenantId, email])
+  @@index([tenantId])
+}
+
+model Plan {
+  code          String       @id
+  name          String
+  description   String?
+  priceCents    Int          @default(0)
+  currency      String       @default("usd")
+  interval      PlanInterval @default(MONTH)
+  stripePriceId String?
+  limits        Json
+  isActive      Boolean      @default(true)
+  sortIndex     Int          @default(0)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+model Subscription {
+  id                   String             @id @default(cuid())
+  tenantId             String             @unique
+  planCode             String             @default("free")
+  stripeSubscriptionId String?            @unique
+  status               SubscriptionStatus @default(ACTIVE)
+  currentPeriodEnd     DateTime?
+  cancelAtPeriodEnd    Boolean            @default(false)
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+  tenant               Tenant             @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+}
+
+model Project {
+  id           String        @id @default(cuid())
+  tenantId     String
+  name         String
+  subdomain    String        @unique
+  status       ProjectStatus @default(DRAFT)
+  theme        Json          @default("{}")
+  seo          Json          @default("{}")
+  faviconUrl   String?
+  customCode   String?
+  publishedAt  DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  tenant       Tenant        @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  pages        Page[]
+  domains      ProjectDomain[]
+  publishEvents PublishEvent[]
+  pageViews    PageViewDaily[]
+
+  @@index([tenantId])
+  @@index([status])
+}
+
+model ProjectDomain {
+  id                String       @id @default(cuid())
+  tenantId          String
+  projectId         String
+  host              String       @unique
+  kind              DomainKind   @default(CUSTOM)
+  status            DomainStatus @default(PENDING)
+  verificationToken String
+  verifiedAt        DateTime?
+  isPrimary         Boolean      @default(false)
+  createdAt         DateTime     @default(now())
+  project           Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@index([tenantId])
+}
+
+model Page {
+  id                 String       @id @default(cuid())
+  tenantId           String
+  projectId          String
+  title              String
+  path               String       @default("/")
+  seo                Json         @default("{}")
+  sortIndex          Int          @default(0)
+  draftDocument      Json
+  draftRevision      Int          @default(0)
+  publishedRevision  Int?
+  publishedVersionId String?      @unique
+  publishedAt        DateTime?
+  status             PageStatus   @default(DRAFT)
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+  project            Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  versions           PageVersion[] @relation("PageVersions")
+  publishedVersion   PageVersion?  @relation("PublishedVersion", fields: [publishedVersionId], references: [id])
+  pageViews          PageViewDaily[]
+  publishEvents      PublishEvent[]
+
+  @@unique([projectId, path])
+  @@index([projectId])
+  @@index([tenantId])
+}
+
+model PageVersion {
+  id            String   @id @default(cuid())
+  tenantId      String
+  pageId        String
+  version       Int
+  document      Json
+  note          String?
+  createdById   String?
+  createdAt     DateTime @default(now())
+  page          Page     @relation("PageVersions", fields: [pageId], references: [id], onDelete: Cascade)
+  createdBy     User?    @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  publishedPage Page?    @relation("PublishedVersion")
+
+  @@unique([pageId, version])
+  @@index([pageId])
+  @@index([tenantId])
+}
+
+model Template {
+  id           String       @id @default(cuid())
+  tenantId     String?
+  name         String
+  slug         String
+  category     String       @default("other")
+  description  String?
+  thumbnailUrl String?
+  document     Json
+  isSystem     Boolean      @default(false)
+  isPublished  Boolean      @default(true)
+  sortIndex    Int          @default(0)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  tenant       Tenant?      @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@unique([slug])
+  @@index([tenantId])
+  @@index([isSystem, isPublished])
+}
+
+model MediaAsset {
+  id        String   @id @default(cuid())
+  tenantId  String
+  key       String   @unique
+  url       String
+  filename  String
+  mime      String
+  size      Int
+  width     Int?
+  height    Int?
+  createdAt DateTime @default(now())
+  tenant    Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+}
+
+model PublishEvent {
+  id        String   @id @default(cuid())
+  tenantId  String
+  projectId String
+  pageId    String
+  versionId String?
+  actorId   String?
+  createdAt DateTime @default(now())
+  tenant    Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  page      Page     @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  actor     User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([tenantId, createdAt])
+  @@index([projectId, createdAt])
+}
+
+model PageViewDaily {
+  id        String   @id @default(cuid())
+  tenantId  String
+  projectId String
+  pageId    String
+  date      DateTime @db.Date
+  count     Int      @default(0)
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  page      Page     @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  @@unique([pageId, date])
+  @@index([projectId, date])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  tenantId   String?
+  actorId    String?
+  action     String
+  targetType String
+  targetId   String?
+  meta       Json     @default("{}")
+  ip         String?
+  createdAt  DateTime @default(now())
+  tenant     Tenant?  @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  actor      User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([tenantId, createdAt])
+  @@index([action, createdAt])
+}
